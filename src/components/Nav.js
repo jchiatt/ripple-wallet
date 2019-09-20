@@ -17,12 +17,26 @@ const StyledNav = styled.nav`
   }
 `;
 
-export default function Nav() {
+/** 
+ * This is an extremely naive router implementation. Not for production use. 
+ * Not accessible or semantic. Does not actually push into history. 
+ * Would use a more standard solution in a real application.
+*/
+const Link = styled.li`
+  ${props => (props.active ? "color: var(--black);" : null)}
+
+  &:hover {
+    cursor: pointer;
+    color: var(--darkBlue);
+  }
+`;
+
+export default function Nav({ currentPage, changePage }) {
   return (
     <StyledNav>
       <ul>
-        <li>View Balance</li>
-        <li>Send Funds</li>
+        <Link active={currentPage === "balance"} onClick={() => changePage("balance")}>View Balance</Link>
+        <Link active={currentPage === "send"} onClick={() => changePage("send")}>Send Funds</Link>
       </ul>
     </StyledNav>
   );

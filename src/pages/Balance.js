@@ -1,17 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 2rem;
-`;
-
-const Heading = styled.h2`
-  margin: 0;
-`
+import CenteredContainer from "../components/CenteredContainer";
+import Heading from "../components/Heading";
 
 const Amount = styled.h3`
   margin: 0;
@@ -35,7 +25,7 @@ const Address = styled.p`
 
 export default function Balance({ balance }) {
   return (
-    <Container>
+    <CenteredContainer>
       <Heading>Your Balance</Heading>
       <Amount>
         {balance} <span>XRP</span>
@@ -43,6 +33,6 @@ export default function Balance({ balance }) {
       <Address>
         Address: <span>rJvNPPw1ew9Ph1evJ86g8Nrp3rqyHHnvQL</span>
       </Address>
-    </Container>
+    </CenteredContainer>
   );
 }

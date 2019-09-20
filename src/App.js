@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import Balance from "./pages/Balance";
+import Send from "./pages/Send";
 import { MY_ADDRESS } from './util/constants';
 import API from "./util/API";
 
@@ -20,6 +21,7 @@ const Inner = styled.div`
 
 function App() {
   const [balance, setBalance] = React.useState(null);
+  const [currentPage, setCurrentPage] = React.useState("balance");
 
   React.useEffect(() => {
     API.connect()
@@ -41,10 +43,17 @@ function App() {
   return (
     <AppContainer>
       <Header />
-      <Nav />
+      <Nav currentPage={currentPage} changePage={setCurrentPage} />
       <Inner>
-        {!balance && <p>Loading...</p>}
-        {balance && <Balance balance={balance} />}
+        {currentPage === "balance" && (
+          <>
+            {!balance && <p>Loading...</p>}
+            {balance && <Balance balance={balance} />}
+          </>
+        )}
+        {currentPage === "send" && (
+          <Send />
+        )}
       </Inner>
     </AppContainer>
   );
