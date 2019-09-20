@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import Balance from "./pages/Balance";
+import { MY_ADDRESS } from './util/constants';
+import API from "./util/API";
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -17,12 +19,32 @@ const Inner = styled.div`
 `;
 
 function App() {
+  const [balance, setBalance] = React.useState(null);
+
+  React.useEffect(() => {
+    API.connect()
+      .then(() => {
+        console.log(`Getting account info for ${MY_ADDRESS}`);
+        return API.getAccountInfo(MY_ADDRESS);
+      })
+      .then(info => {
+        console.info(info);
+        setBalance(info.xrpBalance);
+      })
+      .catch(console.error);
+
+    return () => {
+      API.disconnect();
+    }
+  }, []);
+
   return (
     <AppContainer>
       <Header />
       <Nav />
       <Inner>
-        <Balance />
+        {!balance && <p>Loading...</p>}
+        {balance && <Balance balance={balance} />}
       </Inner>
     </AppContainer>
   );

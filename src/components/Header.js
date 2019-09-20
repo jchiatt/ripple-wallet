@@ -13,7 +13,7 @@ const StyledHeader = styled.header`
 export default function Header() {
   return (
     <StyledHeader>
-      <h1>Wallet</h1>
+      <h1>XRP Wallet</h1>
     </StyledHeader>
   );
 }

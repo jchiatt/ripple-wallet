@@ -9,9 +9,13 @@ const Container = styled.div`
   padding-top: 2rem;
 `;
 
-const Amount = styled.h2`
+const Heading = styled.h2`
   margin: 0;
-  font-size: 5rem;
+`
+
+const Amount = styled.h3`
+  margin: 0;
+  font-size: 2rem;
   text-align: center;
 
   span {
@@ -29,11 +33,12 @@ const Address = styled.p`
   }
 `;
 
-export default function Balance() {
+export default function Balance({ balance }) {
   return (
     <Container>
+      <Heading>Your Balance</Heading>
       <Amount>
-        300<span>XRP</span>
+        {balance} <span>XRP</span>
       </Amount>
       <Address>
         Address: <span>rJvNPPw1ew9Ph1evJ86g8Nrp3rqyHHnvQL</span>
