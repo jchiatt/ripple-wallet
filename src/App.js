@@ -4,8 +4,6 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import Balance from "./pages/Balance";
 import Send from "./pages/Send";
-import { MY_ADDRESS } from './util/constants';
-import API from "./util/API";
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -20,25 +18,7 @@ const Inner = styled.div`
 `;
 
 function App() {
-  const [balance, setBalance] = React.useState(null);
   const [currentPage, setCurrentPage] = React.useState("balance");
-
-  React.useEffect(() => {
-    API.connect()
-      .then(() => {
-        console.log(`Getting account info for ${MY_ADDRESS}`);
-        return API.getAccountInfo(MY_ADDRESS);
-      })
-      .then(info => {
-        console.info(info);
-        setBalance(info.xrpBalance);
-      })
-      .catch(console.error);
-
-    return () => {
-      API.disconnect();
-    }
-  }, []);
 
   return (
     <AppContainer>
@@ -46,10 +26,7 @@ function App() {
       <Nav currentPage={currentPage} changePage={setCurrentPage} />
       <Inner>
         {currentPage === "balance" && (
-          <>
-            {!balance && <p>Loading...</p>}
-            {balance && <Balance balance={balance} />}
-          </>
+          <Balance />
         )}
         {currentPage === "send" && (
           <Send />
