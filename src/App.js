@@ -1,11 +1,19 @@
 import React from 'react';
-import './App.css';
+import styled from 'styled-components';
+import Header from './components/Header';
+
+const AppContainer = styled.div`
+  min-height: 100vh;
+  background: var(--blue);
+  color: white;
+`;
 
 function App() {
   return (
-    <div className="App">
+    <AppContainer>
+      <Header />
       <p>Hi hello</p>
-    </div>
+    </AppContainer>
   );
 }
 

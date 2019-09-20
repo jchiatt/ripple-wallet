@@ -1,3 +1,21 @@
+:root {
+  --lightBlue: #1db4ff;
+  --blue: #0a93eb;
+  --darkBlue: #0f72e5;
+  --black: #171c21;
+}
+
+html {
+  box-sizing: border-box;
+  color: var(--black);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
