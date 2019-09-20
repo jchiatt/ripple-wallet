@@ -18,6 +18,7 @@ const loading = keyframes`
 
 const Form = styled.form`
   width: 100%;
+  max-width: 660px;
   margin-top: 1rem;
 `;
 
