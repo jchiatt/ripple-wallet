@@ -1,3 +1,16 @@
+:root {
+  --lightBlue: #1db4ff;
+  --blue: #0a93eb;
+  --darkBlue: #0f72e5;
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: var(--blue);
+  color: white;
 }
