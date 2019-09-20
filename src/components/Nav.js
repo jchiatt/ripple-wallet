@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const StyledNav = styled.nav`
   background: var(--lightBlue);
@@ -25,5 +25,5 @@ export default function Nav() {
         <li>Send Funds</li>
       </ul>
     </StyledNav>
-  )
+  );
 }
