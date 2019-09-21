@@ -6,7 +6,20 @@ A proof-of-concept wallet for XRP. Uses a pre-determined TestNet address. **This
 
 1. Install dependencies (`yarn`)
 2. `yarn start` will start the development server
-3. `yarn test` will run available tests
+
+## Useful Commands
+
+To run the tests:
+
+```
+yarn test
+```
+
+To format the codebase with Prettier:
+
+```
+yarn format
+```
 
 ## Project Structure
 
