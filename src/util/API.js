@@ -1,7 +1,7 @@
-import { RippleAPI } from 'ripple-lib';
-import { SERVER } from './constants';
+import { RippleAPI } from "ripple-lib";
+import { SERVER } from "./constants";
 
-const API = new RippleAPI({ 
+const API = new RippleAPI({
   server: SERVER
 });
 

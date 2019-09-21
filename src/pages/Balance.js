@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import CenteredContainer from "../components/CenteredContainer";
 import Heading from "../components/Heading";
-import { getAccountInfo } from '../util/getAccountInfo';
+import { getAccountInfo } from "../util/getAccountInfo";
 
 const Amount = styled.h3`
   margin: 0;
@@ -24,7 +24,7 @@ const Address = styled.p`
   }
 `;
 
-export default function Balance({ getInfo = getAccountInfo}) {
+export default function Balance({ getInfo = getAccountInfo }) {
   const [balance, setBalance] = React.useState(null);
 
   React.useEffect(() => {

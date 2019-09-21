@@ -8,7 +8,7 @@ export function getAccountInfo(setBalance) {
       return API.getAccountInfo(MY_ADDRESS);
     })
     .then(info => {
-      console.info({info});
+      console.info({ info });
       setBalance(info.xrpBalance);
     })
     .catch(console.error);
@@ -16,6 +16,4 @@ export function getAccountInfo(setBalance) {
   return () => {
     API.disconnect();
   };
-
 }
-

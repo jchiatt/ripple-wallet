@@ -25,12 +25,8 @@ function App() {
       <Header />
       <Nav currentPage={currentPage} changePage={setCurrentPage} />
       <Inner>
-        {currentPage === "balance" && (
-          <Balance />
-        )}
-        {currentPage === "send" && (
-          <Send />
-        )}
+        {currentPage === "balance" && <Balance />}
+        {currentPage === "send" && <Send />}
       </Inner>
     </AppContainer>
   );

@@ -1,10 +1,10 @@
-import styled, { keyframes } from 'styled-components';
-import React from 'react';
+import styled, { keyframes } from "styled-components";
+import React from "react";
 import CenteredContainer from "../components/CenteredContainer";
 import Heading from "../components/Heading";
-import API from '../util/API';
-import { CURRENCY, MY_ADDRESS, MY_SECRET } from '../util/constants';
-import { submitTransaction } from '../util/submitTransaction';
+import API from "../util/API";
+import { CURRENCY, MY_ADDRESS, MY_SECRET } from "../util/constants";
+import { submitTransaction } from "../util/submitTransaction";
 
 const loading = keyframes`
   from {
@@ -71,15 +71,15 @@ const order = {
   source: {
     address: MY_ADDRESS,
     maxAmount: {
-      currency: CURRENCY,
+      currency: CURRENCY
     }
   },
   destination: {
     amount: {
-      currency: CURRENCY,
+      currency: CURRENCY
     }
   }
-}
+};
 
 const ledgerOffset = 5;
 const myInstructions = { maxLedgerVersionOffset: ledgerOffset };
@@ -100,16 +100,16 @@ export default function Send() {
 
     API.connect()
       .then(() => {
-        setPaymentStatus("Preparing transaction...")
+        setPaymentStatus("Preparing transaction...");
         return API.preparePayment(MY_ADDRESS, order, myInstructions);
       })
       .then(prepared => {
         setPaymentStatus("Transaction prepared...");
         return API.getLedger().then(ledger => {
           console.log("Current Ledger", ledger.ledgerVersion);
-          setPaymentStatus("Submitting transaction...")
+          setPaymentStatus("Submitting transaction...");
           return submitTransaction(ledger.ledgerVersion, prepared, MY_SECRET);
-        })
+        });
       })
       .then(() => {
         setPaymentStatus("Transaction submitted and verified!");
@@ -141,7 +141,9 @@ export default function Send() {
     <CenteredContainer>
       <Heading>Send Funds</Heading>
       <Form onSubmit={handleSubmit}>
-        {(loading || orderSuccessful) && <p>{paymentStatus}</p>}
+        {(loading || orderSuccessful) && (
+          <p data-testid="payment-status">{paymentStatus}</p>
+        )}
         <Fieldset disabled={loading} aria-busy={loading}>
           <label htmlFor="amount">
             <Input
@@ -152,6 +154,7 @@ export default function Send() {
               required
               onChange={handleChange}
               value={amount}
+              data-testid="amount-input"
             />
           </label>
           <label htmlFor="destination">
@@ -163,9 +166,12 @@ export default function Send() {
               required
               onChange={handleChange}
               value={destination}
+              data-testid="destination-input"
             />
           </label>
-          <Button type="submit">Send Funds</Button>
+          <Button type="submit" data-testid="send-funds-button">
+            Send Funds
+          </Button>
         </Fieldset>
       </Form>
     </CenteredContainer>
