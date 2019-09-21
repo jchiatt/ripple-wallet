@@ -25,37 +25,11 @@ yarn format
 
 ```bash
 
-├── README.md
-├── package.json
 ├── public // static assets
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── logo192.png
-│   ├── logo512.png
-│   ├── manifest.json
-│   └── robots.txt
 ├── src // where all the magic happens
-│   ├── App.js
 │   ├── components // UI components
-│   │   ├── CenteredContainer.js
-│   │   ├── Header.js
-│   │   ├── Heading.js
-│   │   └── Nav.js
-│   ├── index.css
-│   ├── index.js
 │   ├── pages // top-level screens of the app
-│   │   ├── Balance.js
-│   │   ├── Send.js
-│   │   └── __tests__
-│   │       ├── Balance.test.js
-│   │       └── Send.test.js
 │   └── util // utility functions
-│       ├── API.js
-│       ├── constants.js
-│       ├── getAccountInfo.js
-│       └── submitTransaction.js
-├── yarn-error.log
-└── yarn.lock
 ```
 
 ## Usage
